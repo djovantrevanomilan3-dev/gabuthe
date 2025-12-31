@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Djovan AI - Peramal Masa Depan Unik dengan Gambar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', 'Chalkboard SE', 'Arial Rounded MT Bold', cursive;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 50%, #ffd166 100%);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 950px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.98);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            border: 10px solid #ef476f;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(78, 205, 196, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 209, 102, 0.1) 0%, transparent 50%);
+            z-index: 0;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 35px;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, #ef476f, #ff9e00, #06d6a0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 4px 4px 0 #ffd166;
+            letter-spacing: 2px;
+            -webkit-text-stroke: 1px #073b4c;
+        }
+
+        .subtitle {
+            font-size: 1.6rem;
+            color: #118ab2;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: bold;
+            background-color: #ffd166;
+            padding: 15px;
+            border-radius: 15px;
+            border: 4px dashed #ef476f;
+        }
+
+        .ai-avatar {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 30px;
+            background: linear-gradient(135deg, #ef476f, #ffd166, #06d6a0);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            box-shadow: 0 15px 30px rgba(239, 71, 111, 0.6);
+            border: 10px solid #118ab2;
+            animation: float 3s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-avatar::after {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transform: translateX(-100%) rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(2deg); }
+            50% { transform: translateY(-10px) rotate(-2deg); }
+            75% { transform: translateY(-15px) rotate(1deg); }
+        }
+
+        .input-section {
+            background-color: #118ab2;
+            padding: 35px;
+            border-radius: 25px;
+            margin-bottom: 35px;
+            position: relative;
+            z-index: 1;
+            border: 8px double #ffd166;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        label {
+            font-size: 1.6rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            text-shadow: 3px 3px 0 #073b4c;
+            text-align: center;
+        }
+
+        label i {
+            color: #ffd166;
+            font-size: 2.2rem;
+        }
+
+        input {
+            padding: 22px;
+            border-radius: 20px;
+            border: 6px solid #ffd166;
+            background-color: white;
+            color: #073b4c;
+            font-size: 1.5rem;
+            font-weight: bold;
+            transition: all 0.4s ease;
+            text-align: center;
+            font-family: inherit;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #ef476f;
+            box-shadow: 0 0 30px rgba(239, 71, 111, 0.9);
+            transform: scale(1.05);
+            background-color: #ffebee;
+        }
+
+        button {
+            background: linear-gradient(to right, #ef476f, #ff9e00);
+            color: white;
+            border: none;
+            padding: 22px;
+            border-radius: 20px;
+            font-size: 1.7rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 25px;
+            text-shadow: 3px 3px 0 #073b4c;
+            letter-spacing: 1.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.7s;
+        }
+
+        button:hover::before {
+            left: 100%;
+        }
+
+        button:hover {
+            transform: translateY(-10px) scale(1.08);
+            box-shadow: 0 20px 30px rgba(239, 71, 111, 0.7);
+            background: linear-gradient(to right, #ff0000, #ff9e00);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin: 30px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .loading-spinner {
+            border: 10px solid rgba(255, 255, 255, 0.3);
+            border-top: 10px solid #ef476f;
+            border-right: 10px solid #ffd166;
+            border-bottom: 10px solid #06d6a0;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            animation: spin 1.8s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading p {
+            font-size: 1.8rem;
+            color: #073b4c;
+            font-weight: bold;
+            background: linear-gradient(to right, #ffd166, #06d6a0);
+            padding: 15px 30px;
+            border-radius: 15px;
+            display: inline-block;
+            border: 4px solid #ef476f;
+        }
+
+        .result-section {
+            background: linear-gradient(135deg, #06d6a0, #118ab2);
+            padding: 35px;
+            border-radius: 25px;
+            margin-top: 30px;
+            position: relative;
+            z-index: 1;
+            border: 8px solid #ef476f;
+            display: none;
+            animation: popIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.3) rotate(-15deg); }
+            80% { transform: scale(1.05) rotate(5deg); }
+            100% { opacity: 1; transform: scale(1) rotate(0deg); }
+        }
+
+        .result-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            color: white;
+            font-size: 2.2rem;
+            text-shadow: 3px 3px 0 #073b4c;
+            text-align: center;
+        }
+
+        .result-header i {
+            font-size: 3rem;
+            color: #ffd166;
+        }
+
+        .prediction-text {
+            font-size: 2rem;
+            line-height: 1.7;
+            color: #073b4c;
+            text-align: center;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            border: 6px dotted #118ab2;
+            font-weight: bold;
+            margin-bottom: 25px;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .prediction-text strong {
+            color: #ef476f;
+            font-size: 2.3rem;
+            text-shadow: 2px 2px 0 #ffd166;
+            -webkit-text-stroke: 1px #073b4c;
+        }
+
+        /* PERUBAHAN UTAMA: Kontainer gambar yang lebih besar */
+        .future-image-container {
+            width: 100%;
+            min-height: 350px; /* Diperbesar dari 250px */
+            max-height: 500px; /* Tinggi maksimum */
+            border-radius: 20px;
+            margin: 30px 0;
+            background: linear-gradient(135deg, rgba(239, 71, 111, 0.2), rgba(255, 209, 102, 0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 6px solid #118ab2;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* PERUBAHAN UTAMA: Gambar lebih besar dan full size */
+        #futureImage {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Diubah dari 'cover' ke 'contain' untuk melihat seluruh gambar */
+            border-radius: 15px;
+            max-height: 100%;
+            max-width: 100%;
+            background-color: white; /* Background putih jika gambar transparan */
+        }
+
+        .image-caption {
+            text-align: center;
+            font-size: 1.4rem;
+            color: #073b4c;
+            font-weight: bold;
+            margin-top: 15px;
+            background-color: #ffd166;
+            padding: 10px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .share-section {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            background: #118ab2;
+            color: white;
+            padding: 18px 35px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border: 5px solid #ffd166;
+            text-shadow: 2px 2px 0 #073b4c;
+            min-width: 220px;
+            justify-content: center;
+        }
+
+        .share-btn:hover {
+            background: #073b4c;
+            transform: translateY(-8px) rotate(3deg);
+            box-shadow: 0 15px 20px rgba(7, 59, 76, 0.4);
+        }
+
+        .prediction-counter {
+            text-align: center;
+            margin-top: 25px;
+            color: white;
+            font-size: 1.4rem;
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(to right, #ef476f, #ff9e00);
+            padding: 15px 30px;
+            border-radius: 15px;
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+            border: 4px solid #ffd166;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #073b4c;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+
+        .disclaimer {
+            font-style: italic;
+            margin-top: 20px;
+            color: #555;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            border: 5px double #ef476f;
+        }
+
+        .credits {
+            margin-top: 15px;
+            color: #ef476f;
+            font-weight: bold;
+            font-size: 1.4rem;
+            text-shadow: 2px 2px 0 #ffd166;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ef476f;
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Tombol untuk zoom gambar */
+        .zoom-controls {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 2;
+        }
+
+        .zoom-btn {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(239, 71, 111, 0.8);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .zoom-btn:hover {
+            background-color: #ef476f;
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+                max-width: 95%;
+            }
+            
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            .ai-avatar {
+                width: 140px;
+                height: 140px;
+                font-size: 4rem;
+            }
+            
+            .prediction-text {
+                font-size: 1.6rem;
+            }
+            
+            .share-section {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .share-btn {
+                width: 100%;
+                min-width: auto;
+            }
+            
+            .future-image-container {
+                min-height: 280px; /* Disesuaikan untuk mobile */
+                max-height: 350px;
+            }
+            
+            .input-section, .result-section {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+                border-width: 6px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .ai-avatar {
+                width: 120px;
+                height: 120px;
+                font-size: 3.5rem;
+                border-width: 8px;
+            }
+            
+            .subtitle {
+                font-size: 1.3rem;
+                padding: 12px;
+            }
+            
+            .prediction-text {
+                font-size: 1.4rem;
+                padding: 20px;
+            }
+            
+            button {
+                padding: 18px;
+                font-size: 1.4rem;
+            }
+            
+            .future-image-container {
+                min-height: 220px;
+                max-height: 280px;
+            }
+            
+            .zoom-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="ai-avatar">
+                <i class="fas fa-hat-wizard"></i>
+            </div>
+            <h1>DJOVAN AI</h1>
+            <p class="subtitle">Peramal Masa Depan dengan 20 Ramalan Unik + Gambar Besar untuk Setiap Ramalan!</p>
+        </header>
+
+        <div class="input-section">
+            <div class="input-group">
+                <label for="nameInput"><i class="fas fa-user-ninja"></i> MASUKKAN NAMA UNTUK DIRAMAL MASA DEPANNYA:</label>
+                <input type="text" id="nameInput" placeholder="Contoh: Budi, Sari, Joko, dll..." autocomplete="off" autofocus>
+                <button id="predictButton">
+                    <i class="fas fa-magic"></i> LIHAT RAMALAN MASA DEPAN
+                </button>
+            </div>
+        </div>
+
+        <div class="loading" id="loadingIndicator">
+            <div class="loading-spinner"></div>
+            <p>Djovan sedang membaca nasibmu...</p>
+        </div>
+
+        <div class="result-section" id="resultSection">
+            <div class="result-header">
+                <i class="fas fa-crystal-ball"></i>
+                <h2>RAMALAN MASA DEPAN</h2>
+            </div>
+            
+            <div class="future-image-container">
+                <img id="futureImage" src="" alt="Gambar Ramalan">
+                <div class="zoom-controls">
+                    <button class="zoom-btn" id="zoomInBtn" title="Perbesar Gambar">
+                        <i class="fas fa-search-plus"></i>
+                    </button>
+                    <button class="zoom-btn" id="zoomOutBtn" title="Perkecil Gambar">
+                        <i class="fas fa-search-minus"></i>
+                    </button>
+                    <button class="zoom-btn" id="resetZoomBtn" title="Reset Ukuran">
+                        <i class="fas fa-undo"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="image-caption" id="imageCaption">Gambar Ramalan</div>
+            
+            <p class="prediction-text" id="predictionText">
+                <!-- Ramalan akan muncul di sini -->
+            </p>
+            
+            <div class="share-section">
+                <div class="share-btn" id="shareBtn">
+                    <i class="fas fa-share-alt"></i> BAGIKAN RAMALAN
+                </div>
+                <div class="share-btn" id="newPredictionBtn">
+                    <i class="fas fa-redo-alt"></i> RAMAL LAGI
+                </div>
+            </div>
+            
+            <div class="prediction-counter">
+                <i class="fas fa-chart-bar"></i> RAMALAN KE: <span id="predictionCount">0</span>/20
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2023 Djovan AI - Semua ramalan ini hanya untuk hiburan semata</p>
+            <p class="disclaimer">DISCLAIMER: Ramalan yang diberikan adalah hasil algoritma acak berdasarkan 20 ramalan unik yang telah disediakan. Semua ramalan ini TIDAK SERIUS dan hanya untuk hiburan belaka. Jangan dianggap serius ya! Gambar hanya ilustrasi.</p>
+            <p class="credits">Dilengkapi dengan 20 Ramalan Unik + Gambar Besar untuk Setiap Ramalan!</p>
+        </footer>
+    </div>
+
+    <script>
+        // Database 20 ramalan unik dengan gambar
+        const uniquePredictions = [
+            {
+                text: "nikah ama sahroni",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTb8WbRKMUCZsQBHk1jSIPDHCu4mM7ll3ZIBg&s",
+                caption: "Pernikahan Bahagia dengan Sahroni"
+            },
+            {
+                text: "jadi goblin etanol",
+                image: "https://assets.promediateknologi.id/crop/0x0:0x0/0x0/webp/photo/p3/180/2025/10/21/Screenshot-2025-10-21-203900-970695724.png",
+                caption: "Goblin Etanol yang Ceria"
+            },
+            {
+                text: "masuk member suki",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPIShMg1es2LKvCcRHmaTOgHgbQgdnbphEzA&s",
+                caption: "Member VIP Suki"
+            },
+            {
+                text: "menjadi bos sawit",
+                image: "https://preview.redd.it/i-have-no-one-to-send-this-to-v0-j58l2c08h3ag1.jpeg?width=480&format=pjpg&auto=webp&s=bac4e1c38e800b012d01bad7c4726d038e905a89",
+                caption: "Bos Perkebunan Sawit Sukses"
+            },
+            {
+                text: "nikah ama ragil",
+                image: "https://pbs.twimg.com/media/FZzJ0ICUsAIyO2V.jpg",
+                caption: "Pernikahan Mewah dengan Ragil"
+            },
+            {
+                text: "ditempelin ambacong",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT03kqVNYAHG69WjgL2thXTfZo2-yNcrheAFg&s",
+                caption: "Teman Setia Ambacong"
+            },
+            {
+                text: "menjadi penyanyi solo",
+                image: "https://static.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/p1/142/2025/12/23/Inilah-lirik-lagu-Mou-Koi-Nante-Shinai-versi-romaji-yang-dinyanyikan-Noriyuki-Makihara-141376879.png",
+                caption: "Penyanyi Solo Terkenal"
+            },
+            {
+                text: "dirodok p diddy",
+                image: "https://www.atlanticrecords.com/sites/g/files/g2000015596/files/styles/artist_image_detail/public/2023-02/Pdiddy.jpg?itok=iQy4ar7K",
+                caption: "Kolaborasi dengan P Diddy"
+            },
+            {
+                text: "disayang mas rusdi",
+                image: "https://static.wikitide.net/tampvanwiki/0/0a/Rusdi_Omaygot.png",
+                caption: "Disayang Mas Rusdi"
+            },
+            {
+                text: "menjadi titisan sugiono",
+                image: "https://media.suara.com/pictures/653x366/2020/08/19/31394-shigeo-tokuda-atau-dikenal-kakek-sugiono-scmpcom.jpg",
+                caption: "titisan sugiono loh ya"
+            },
+            {
+                text: "menjadi member jomok",
+                image: "https://cache.lahelu.com/thumbnail-PNTVs3f4h",
+                caption: "Member Klub Eksklusif"
+            },
+            {
+                text: "jatuh cinta ama genderuwo",
+                image: "https://assets.promediateknologi.id/crop/0x0:0x0/0x0/webp/photo/p3/231/2025/05/13/Malam-Jumat-legi-39-2238139550.jpg",
+                caption: "Cinta dengan Genderuwo"
+            },
+            {
+                text: "menjadi Patrick",
+                image: "https://media.tenor.com/JAJEdIBuT_gAAAAM/diegopatricio-patricio.gif",
+                caption: "Patrick dari Bikini Bottom"
+            },
+            {
+                text: "menjadi odgj",
+                image: "https://poskomalut.com/wp-content/uploads/2022/01/WhatsApp-Image-2022-01-01-at-22.36.23.jpeg",
+                caption: "Orang Dalam keadaan gila"
+            },
+            {
+                text: "tukang ngaceng",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRn9NDkVsKO9VVjqc3SP0Ay9nmQSXQpvi5-IA&s",
+                caption: "Tukang Ngaceng Profesional"
+            },
+            {
+                text: "penjual daging tikus",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQj9iUbuySIVHqgnhx82vEe87iI7uyOdx3JHQ&s",
+                caption: "Penjual Daging Tikus Pasar"
+            },
+            {
+                text: "beban keluarga",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT15FEh4gOvG0j9C_bAToX8Ig0QKMgdNt4hxg&s",
+                caption: "Beban Keluarga Terberat"
+            },
+            {
+                text: "babi ngepet",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUTJoN6zMRYRd3UzuiMHIkV6yY2R0YOrfLyg&s",
+                caption: "Babi Ngepet Legendary"
+            },
+            {
+                text: "menjadi hitam legam",
+                image: "https://i.pinimg.com/736x/e3/8a/3b/e38a3b8322ab3432d4949ed0b4599301.jpg",
+                caption: "Hitam Legam Mengkilap"
+            },
+            {
+                text: "tukang sedot wc",
+                image: "https://image.idntimes.com/post/20230712/7-abaf3455a02cc0515d9d56d51a183cf3.jpg",
+                caption: "Tukang Sedot WC Andalan"
+            }
+        ];
+
+        // Database tambahan untuk melengkapi ramalan
+        const predictionDetails = {
+            consequences: [
+                "dan hidup bahagia selamanya",
+                "dan terkenal di seluruh negeri",
+                "sampai akhir hayat",
+                "dengan penghasilan miliaran rupiah",
+                "dan punya 10 anak",
+                "hingga tua renta",
+                "sambil terus berkarya",
+                "dengan penuh semangat",
+                "sampai dunia kiamat",
+                "tanpa pernah menyesal",
+                "hingga akhir zaman",
+                "dengan penuh kebahagiaan",
+                "dan dapat banyak untung",
+                "sampai maut memisahkan",
+                "dengan gaya yang oke punya",
+                "hingga sukses besar",
+                "dan menjadi legenda",
+                "sampai dikenang sepanjang masa",
+                "dengan penuh keberanian",
+                "hingga meraih mimpi"
+            ],
+            
+            locations: [
+                "di kampung halaman",
+                "di kota metropolitan",
+                "di pelosok desa",
+                "di tengah hutan",
+                "di tepi pantai",
+                "di puncak gunung",
+                "di tengah kota",
+                "di daerah terpencil",
+                "di kompleks perumahan",
+                "di pasar tradisional",
+                "di mall megah",
+                "di sawah luas",
+                "di pinggir jalan",
+                "di stasiun kereta",
+                "di terminal bus",
+                "di bandara internasional",
+                "di pelabuhan laut",
+                "di ruang bawah tanah",
+                "di atap gedung",
+                "di tengah lapangan"
+            ],
+            
+            emojis: ["🤣", "😱", "🎉", "💀", "👻", "🤪", "💩", "👑", "🐔", "🐭", "🐷", "🎤", "💍", "🌴", "👨‍🌾", "🚽", "👨‍🚒", "🤑", "💔", "❤️"]
+        };
+
+        // Variabel untuk melacak ramalan yang sudah digunakan
+        let usedPredictions = new Set();
+        let currentZoom = 1; // Level zoom saat ini
+
+        // Fungsi untuk mendapatkan ramalan yang belum digunakan
+        function getUniquePrediction() {
+            // Jika semua ramalan sudah digunakan, reset
+            if (usedPredictions.size >= uniquePredictions.length) {
+                usedPredictions.clear();
+            }
+            
+            let randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * uniquePredictions.length);
+            } while (usedPredictions.has(randomIndex));
+            
+            usedPredictions.add(randomIndex);
+            return uniquePredictions[randomIndex];
+        }
+
+        // Fungsi untuk mendapatkan elemen random dari array
+        function getRandomItem(array) {
+            return array[Math.floor(Math.random() * array.length)];
+        }
+
+        // Fungsi untuk membuat efek konfeti
+        function createConfetti() {
+            const colors = ['#ef476f', '#ffd166', '#06d6a0', '#118ab2', '#073b4c'];
+            const container = document.querySelector('.container');
+            
+            for (let i = 0; i < 80; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.top = Math.random() * 100 + '%';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.width = Math.random() * 25 + 10 + 'px';
+                confetti.style.height = confetti.style.width;
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                confetti.style.opacity = Math.random() * 0.7 + 0.3;
+                
+                container.appendChild(confetti);
+                
+                // Animasi jatuh
+                const animation = confetti.animate([
+                    { transform: `translateY(-100px) rotate(0deg)`, opacity: 1 },
+                    { transform: `translateY(1000px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+                ], {
+                    duration: Math.random() * 3000 + 2000,
+                    easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
+                });
+                
+                // Hapus konfeti setelah animasi
+                animation.onfinish = () => confetti.remove();
+            }
+        }
+
+        // Fungsi untuk mengatur zoom gambar
+        function applyZoom() {
+            const futureImage = document.getElementById('futureImage');
+            futureImage.style.transform = `scale(${currentZoom})`;
+            futureImage.style.transition = 'transform 0.3s ease';
+        }
+
+        // Fungsi untuk menghasilkan ramalan lengkap
+        function generatePrediction(name) {
+            const predictionData = getUniquePrediction();
+            const mainPrediction = predictionData.text;
+            const consequence = getRandomItem(predictionDetails.consequences);
+            const location = getRandomItem(predictionDetails.locations);
+            const emoji = getRandomItem(predictionDetails.emojis);
+            
+            // Beberapa variasi template ramalan
+            const templates = [
+                `${name}, di masa depan kamu akan <strong>${mainPrediction}</strong> ${location} ${consequence} ${emoji}`,
+                `RAMALAN UNTUK ${name.toUpperCase()}: Nasibmu akan <strong>${mainPrediction}</strong> ${consequence} ${location} ${emoji}`,
+                `Wahai ${name}, takdir telah menentukan kamu akan <strong>${mainPrediction}</strong> ${location}. Hasilnya? ${consequence} ${emoji}`,
+                `Halo ${name}! Masa depanmu cerah... Cerah banget sampai kamu bakal <strong>${mainPrediction}</strong> ${consequence} ${location} ${emoji}`
+            ];
+            
+            return {
+                text: getRandomItem(templates),
+                image: predictionData.image,
+                caption: predictionData.caption
+            };
+        }
+
+        // Fungsi untuk menampilkan ramalan
+        function showPrediction() {
+            const nameInput = document.getElementById('nameInput');
+            const name = nameInput.value.trim();
+            
+            if (!name) {
+                alert('WOI! MASUKIN NAMA DULU LAH!');
+                nameInput.focus();
+                return;
+            }
+            
+            // Tampilkan loading
+            const loadingIndicator = document.getElementById('loadingIndicator');
+            const resultSection = document.getElementById('resultSection');
+            
+            loadingIndicator.style.display = 'block';
+            resultSection.style.display = 'none';
+            
+            // Simulasikan proses peramalan dengan delay
+            setTimeout(() => {
+                // Hasilkan ramalan
+                const prediction = generatePrediction(name);
+                
+                // Update UI dengan ramalan
+                document.getElementById('predictionText').innerHTML = prediction.text;
+                document.getElementById('futureImage').src = prediction.image;
+                document.getElementById('futureImage').alt = prediction.caption;
+                document.getElementById('imageCaption').textContent = prediction.caption;
+                
+                // Reset zoom setiap kali gambar baru muncul
+                currentZoom = 1;
+                applyZoom();
+                
+                // Update counter ramalan yang sudah digunakan
+                document.getElementById('predictionCount').textContent = usedPredictions.size;
+                
+                // Buat efek konfeti
+                createConfetti();
+                
+                // Sembunyikan loading dan tampilkan hasil
+                loadingIndicator.style.display = 'none';
+                resultSection.style.display = 'block';
+                
+                // Scroll ke hasil
+                resultSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                
+                // Tambahkan efek suara (opsional)
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                playSuccessSound(audioContext);
+                
+            }, 1800 + Math.random() * 1200); // Random delay antara 1.8-3 detik
+        }
+
+        // Fungsi untuk memainkan suara sukses
+        function playSuccessSound(audioContext) {
+            try {
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.setValueAtTime(523.25, audioContext.currentTime); // C5
+                oscillator.frequency.setValueAtTime(659.25, audioContext.currentTime + 0.1); // E5
+                oscillator.frequency.setValueAtTime(783.99, audioContext.currentTime + 0.2); // G5
+                
+                gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+                
+                oscillator.start();
+                oscillator.stop(audioContext.currentTime + 0.5);
+            } catch (e) {
+                // Jika audio tidak didukung, abaikan
+            }
+        }
+
+        // Fungsi untuk membagikan ramalan
+        function sharePrediction() {
+            const predictionText = document.getElementById('predictionText').textContent;
+            const name = document.getElementById('nameInput').value.trim();
+            const caption = document.getElementById('imageCaption').textContent;
+            
+            const shareText = `RAMALAN DJOVAN AI UNTUK ${name}: ${predictionText}\n\n${caption}\n\nCoba ramalan masa depanmu yang unik dan lucu di sini!`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: `Ramalan Unik ${name} oleh Djovan AI`,
+                    text: shareText,
+                    url: window.location.href
+                });
+            } else {
+                // Fallback untuk browser yang tidak mendukung Web Share API
+                navigator.clipboard.writeText(shareText).then(() => {
+                    alert('Ramalan lucumu sudah disalin! Share ke teman-teman biar pada ketawa!');
+                });
+            }
+        }
+
+        // Fungsi untuk mereset form
+        function resetPrediction() {
+            document.getElementById('nameInput').value = '';
+            document.getElementById('resultSection').style.display = 'none';
+            document.getElementById('futureImage').src = '';
+            document.getElementById('nameInput').focus();
+            // Reset zoom
+            currentZoom = 1;
+        }
+
+        // Event Listeners
+        document.getElementById('predictButton').addEventListener('click', showPrediction);
+        document.getElementById('shareBtn').addEventListener('click', sharePrediction);
+        document.getElementById('newPredictionBtn').addEventListener('click', resetPrediction);
+
+        // Kontrol zoom gambar
+        document.getElementById('zoomInBtn').addEventListener('click', function() {
+            if (currentZoom < 3) {
+                currentZoom += 0.25;
+                applyZoom();
+            }
+        });
+
+        document.getElementById('zoomOutBtn').addEventListener('click', function() {
+            if (currentZoom > 0.5) {
+                currentZoom -= 0.25;
+                applyZoom();
+            }
+        });
+
+        document.getElementById('resetZoomBtn').addEventListener('click', function() {
+            currentZoom = 1;
+            applyZoom();
+        });
+
+        // Enter key support
+        document.getElementById('nameInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                showPrediction();
+            }
+        });
+
+        // Preload gambar untuk performa lebih baik
+        function preloadImages() {
+            uniquePredictions.forEach(prediction => {
+                const img = new Image();
+                img.src = prediction.image;
+            });
+        }
+
+        // Sembunyikan loading indicator pada awal
+        document.getElementById('loadingIndicator').style.display = 'none';
+        
+        // Inisialisasi counter ramalan
+        document.getElementById('predictionCount').textContent = usedPredictions.size;
+        
+        // Preload gambar
+        preloadImages();
+        
+        // Fokus ke input nama saat halaman dimuat
+        document.getElementById('nameInput').focus();
+    </script>
+</body>
+</html>
